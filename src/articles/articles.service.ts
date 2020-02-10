@@ -18,22 +18,22 @@ export class ArticlesService {
         return this.articleRepository.getArticles();
     }
 
-    async createAricle(articleDto: ArticleDto): Promise<Article> {
+    async createAricle(articleDto: ArticleDto, user): Promise<Article> {
         const category = await Category.findOne(articleDto.categoryId);
 
         if (!category) {
             throw new NotFoundException();
         }
 
-        return await this.articleRepository.createAricle(articleDto, category);
+        return await this.articleRepository.createAricle(articleDto, category, user);
     }
 
-    async updateArticle(id: number, articleDto: ArticleDto): Promise<Article> {
-        return await this.articleRepository.updateArticle(id, articleDto);
+    async updateArticle(id: number, articleDto: ArticleDto, user): Promise<Article> {
+        return await this.articleRepository.updateArticle(id, articleDto, user);
     }
 
-    async deleteArticle(id: number): Promise<void> {
-        const result = await this.articleRepository.delete({ id });
+    async deleteArticle(id: number, user): Promise<void> {
+        const result = await this.articleRepository.delete({ id: id, userId: user.id });
 
         if (result.affected === 0) {
             throw new NotFoundException();
