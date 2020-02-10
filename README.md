@@ -2,7 +2,7 @@
 
 ## Install Postgres
 
-[type-database]: https://github.com/typeorm/typeorm/blob/master/docs/entities.md
+[Database Type](https://github.com/typeorm/typeorm/blob/master/docs/entities.md)
 
 ```bash
 CREATE EXTENSION "pgcrypto";
