@@ -1,0 +1,29 @@
+import { Entity, BaseEntity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, ManyToOne } from "typeorm";
+import { Category } from "../categories/category.entity";
+
+@Entity()
+export class Article extends BaseEntity {
+    @PrimaryGeneratedColumn({ type: "bigint" })
+    id: number;
+
+    @Column()
+    name: string;
+
+    @Column()
+    body: string;
+
+    @Column({ type: "bigint" })
+    categoryId: number;
+
+    @Column({nullable:true})
+    userId: string;
+
+    @ManyToOne(type => Category, category => category.article, { eager: true })
+    category: Category;
+
+    @CreateDateColumn()
+    created: Date;
+
+    @UpdateDateColumn()
+    updated: Date;
+}
