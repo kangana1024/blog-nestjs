@@ -2,8 +2,8 @@ import { Entity, BaseEntity, PrimaryGeneratedColumn, Column, CreateDateColumn, U
 
 @Entity()
 export class Category extends BaseEntity {
-    @PrimaryGeneratedColumn("uuid")
-    id: string;
+    @PrimaryGeneratedColumn({type:"bigint"})
+    id: number;
 
     @Column()
     name: string;

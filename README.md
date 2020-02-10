@@ -4,7 +4,8 @@
 
 [Database Type](https://github.com/typeorm/typeorm/blob/master/docs/entities.md)
 
-```bash
+```sql
+# install pgcrypto for uuid
 CREATE EXTENSION "pgcrypto";
 ```
 
