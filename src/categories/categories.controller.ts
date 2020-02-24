@@ -1,7 +1,9 @@
 import { Controller, Get, Post, Body, Patch, Param, ParseIntPipe, Delete } from '@nestjs/common';
 import { CategoriesService } from './categories.service';
 import { CategoryDto } from './dto/category.dto';
+import { ApiTags } from '@nestjs/swagger';
 
+@ApiTags("Categories")
 @Controller('categories')
 export class CategoriesController {
     constructor(
@@ -23,7 +25,7 @@ export class CategoriesController {
     }
 
     @Delete('/:id')
-    deleteCategory(@Param('id',ParseIntPipe) id:number) {
+    deleteCategory(@Param('id', ParseIntPipe) id: number) {
         return this.categorieService.deleteCategory(id);
     }
 }
